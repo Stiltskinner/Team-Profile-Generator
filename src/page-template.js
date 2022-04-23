@@ -44,12 +44,15 @@ const genCard = (employee) => {
     let currentRole = employee.getRole();
     switch (currentRole) {
         case "Manager":
+            console.log("Pushing manager to array")
             employeeArr.push(formatManager(employee));
             break;
         case "Engineer":
+            console.log("Pushing Engineer to array")
             employeeArr.push(formatEngineer(employee));
             break;
         case "Intern":
+            console.log("Pushing Intern to array")
             employeeArr.push(formatIntern(employee));
             break;
         default:

@@ -10,6 +10,8 @@ const fs = require("fs");
 const pageTemplate = require("./src/page-template");
 const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 const inquirer = require("inquirer");
 
 // Question to ask user if they watn to make another employee after they create a manager
@@ -43,6 +45,21 @@ const promptManager = () => {
     })  
 }
 
+const promptEngineer = () => {
+    inquirer
+    .prompt(Engineer.questions)
+    .then((response) => {
+        genEngineer(response);
+    })  
+}
+
+const promptIntern = () => {
+    inquirer
+    .prompt(Intern.questions)
+    .then((response) => {
+        genIntern(response);
+    })  
+}
 // Creates a new manager object from user data
 const genManager = (data) => {
     const { name, id, email, officeNum } = data
@@ -61,6 +78,40 @@ const genManager = (data) => {
     })   
     }
 
+const genEngineer = (data) => {
+    const { name, id, email, gitName} = data
+    const newEngineer = new Engineer.Engineer(name, id, email, gitName);
+    pageTemplate.genCard(newEngineer)
+    inquirer
+    .prompt(anotherPrompt)
+    .then((response) => {
+        switch (response.addAnother) {
+            case "Yes":
+                promptEmployeeType();
+                break;
+            default:
+                break;
+        }
+    })   
+}
+
+const genIntern = (data) => {
+    const { name, id, email, schoolName} = data
+    const newIntern = new Intern.Intern(name, id, email, schoolName);
+    pageTemplate.genCard(newIntern)
+    inquirer
+    .prompt(anotherPrompt)
+    .then((response) => {
+        switch (response.addAnother) {
+            case "Yes":
+                promptEmployeeType();
+                break;
+            default:
+                break;
+        }
+    })   
+}
+
     // Function to ask user what type of employee to make if they choose to make a new one
 const promptEmployeeType = () => {
     inquirer
@@ -68,12 +119,10 @@ const promptEmployeeType = () => {
         .then((response) => {
             switch (response.empType) {
                 case "Engineer":
-                    console.log("Made it to Engineer prompt")
-                    // () => Engineer.promptEngineer();
+                    promptEngineer();
                     break;
                 default:
-                    console.log("Made it to Intern prompt")
-                    // () => internal.promptIntern();
+                    promptIntern();
                     break;  
             }
     });
