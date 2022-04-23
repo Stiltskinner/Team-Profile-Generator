@@ -10,15 +10,12 @@ const fs = require("fs");
 const pageTemplate = require("./src/page-template");
 const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
+const inquirer = require("inquirer");
 
 // Call init to kick off the process of asking for user information
 
 const init = () => {
-    inquirer
-    .prompt(managerQuestions)
-    .then((answers) => {
-        console.log("manager responses", answers)
-    });
+    Manager.promptManager();
 }
 
 // Function to create html file from formatted data
@@ -27,8 +24,4 @@ const writeToFile = () => {
     err ? console.error(err) : console.log('Success!'));
 }
 
-const promptEmployeeType = () => {
-
-}
-
-module.exports = {promptEmployeeType};
+init();
