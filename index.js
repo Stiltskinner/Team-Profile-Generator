@@ -73,6 +73,7 @@ const genManager = (data) => {
                 promptEmployeeType();
                 break;
             default:
+                writeToFile("./dist/team.html", pageTemplate.genHTML())
                 break;
         }
     })   
@@ -90,6 +91,7 @@ const genEngineer = (data) => {
                 promptEmployeeType();
                 break;
             default:
+                writeToFile("./dist/team.html", pageTemplate.genHTML())
                 break;
         }
     })   
@@ -107,6 +109,7 @@ const genIntern = (data) => {
                 promptEmployeeType();
                 break;
             default:
+                writeToFile("./dist/team.html", pageTemplate.genHTML())
                 break;
         }
     })   
@@ -130,6 +133,7 @@ const promptEmployeeType = () => {
 
 // Function to create html file from formatted data
 const writeToFile = (fileName, data) => {
+    let parsedData = `${data}`
     fs.writeFile(fileName, parsedData, (err) =>
     err ? console.error(err) : console.log('Success!'));
 }
