@@ -12,11 +12,69 @@ const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const inquirer = require("inquirer");
 
+// Employee type question to create after manager has been created, to prompt user with inquirer
+const empType = 
+    {
+        type: "list",
+        message: "Would you like to add an engineer or an intern?",
+        name: "empType",
+        choices: ["Engineer","Intern"],
+      };
+
+const anotherPrompt =       {
+    type: "list",
+    message: "Would you like to add another employee?",
+    name: "addAnother",
+    choices: ["Yes","No",],
+  };
+
 // Call init to kick off the process of asking for user information
 
 const init = () => {
-    Manager.promptManager();
-    .then(writeToFile)
+    promptManager() 
+}
+
+const promptManager = () => {
+    inquirer
+    .prompt(Manager.questions)
+    .then((response) => {
+        genManager(response);
+    })  
+}
+
+// Creates a new manager object from user data
+const genManager = (data) => {
+    const { name, id, email, officeNum } = data
+    const newManager = new Manager.Manager(name, id, email, officeNum);
+    pageTemplate.genCard(newManager)
+    inquirer
+    .prompt(anotherPrompt)
+    .then((response) => {
+        switch (response.addAnother) {
+            case "Yes":
+                promptEmployeeType();
+                break;
+            default:
+                break;
+        }
+    })   
+    }
+
+const promptEmployeeType = () => {
+    inquirer
+    .prompt(empType)
+        .then((response) => {
+            switch (response.empType) {
+                case "Engineer":
+                    console.log("Made it to Engineer prompt")
+                    // () => Engineer.promptEngineer();
+                    break;
+                default:
+                    console.log("Made it to Intern prompt")
+                    // () => internal.promptIntern();
+                    break;  
+            }
+    });
 }
 
 // Function to create html file from formatted data
