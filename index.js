@@ -12,6 +12,14 @@ const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const inquirer = require("inquirer");
 
+// Question to ask user if they watn to make another employee after they create a manager
+const anotherPrompt =       {
+    type: "list",
+    message: "Would you like to add another employee?",
+    name: "addAnother",
+    choices: ["Yes","No",],
+  };
+
 // Employee type question to create after manager has been created, to prompt user with inquirer
 const empType = 
     {
@@ -20,13 +28,6 @@ const empType =
         name: "empType",
         choices: ["Engineer","Intern"],
       };
-
-const anotherPrompt =       {
-    type: "list",
-    message: "Would you like to add another employee?",
-    name: "addAnother",
-    choices: ["Yes","No",],
-  };
 
 // Call init to kick off the process of asking for user information
 
@@ -60,6 +61,7 @@ const genManager = (data) => {
     })   
     }
 
+    // Function to ask user what type of employee to make if they choose to make a new one
 const promptEmployeeType = () => {
     inquirer
     .prompt(empType)
