@@ -16,10 +16,11 @@ const inquirer = require("inquirer");
 
 const init = () => {
     Manager.promptManager();
+    .then(writeToFile)
 }
 
 // Function to create html file from formatted data
-const writeToFile = () => {
+const writeToFile = (fileName, data) => {
     fs.writeFile(fileName, parsedData, (err) =>
     err ? console.error(err) : console.log('Success!'));
 }

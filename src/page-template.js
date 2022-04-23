@@ -4,12 +4,12 @@
 let employeeArr = [];
 
 const genCard = (employeeCard) => {
-    employeeArr.push(employeeCard)
-    console.log("Employee Array", employeeArr)
+    employeeArr.push(employeeCard);
+    console.log("Employee Array", employeeArr);
 }
 
 const genHTML = () => {
-    const allCards = employeeArr.join(`'`);
+    const allCards = employeeArr.join('');
     return `<!DOCTYPE html>
     <html lang="en">
     
