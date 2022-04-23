@@ -6,9 +6,10 @@
 // The tests should check that all class properties and methods give the correct output
 
 // Packages needed for this application
-const inquirer = require("inquirer");
 const fs = require("fs");
 const pageTemplate = require("./src/page-template");
+const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
 
 // Call init to kick off the process of asking for user information
 
@@ -25,3 +26,9 @@ const writeToFile = () => {
     fs.writeFile(fileName, parsedData, (err) =>
     err ? console.error(err) : console.log('Success!'));
 }
+
+const promptEmployeeType = () => {
+
+}
+
+module.exports = {promptEmployeeType};
