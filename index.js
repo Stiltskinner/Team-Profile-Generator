@@ -39,6 +39,7 @@ const init = () => {
 
 // promptManager asks the questions needed to create a manager object
 const promptManager = () => {
+    console.log("To get started, enter information about the Manager of this team");
     inquirer
     .prompt(Manager.questions)
     .then((response) => {

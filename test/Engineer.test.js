@@ -3,10 +3,9 @@ const Engineer = require('./../lib/Engineer');
 
 describe("Engineer", () => {
     describe("Initialization", () => {
-        it("It should create an object with 4 undefined properties name, id, and email, gitName", () => {
+        it("It should create an object from the constructor function Engineer", () => {
             const newEngineer = new Engineer.Engineer();
-            
-            expect(newEngineer).toEqual({name: undefined, id: undefined, email: undefined, gitName: undefined});
+            expect(typeof newEngineer).toBe("object")
         });
     });
     describe("getName", () => {

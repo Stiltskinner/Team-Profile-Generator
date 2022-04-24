@@ -2,10 +2,9 @@ const Employee = require('./../lib/Employee');
 
 describe("Employee", () => {
     describe("Initialization", () => {
-        it("It should create an object with 3 undefined properties name, id, and email", () => {
+        it("It should create an object from the constructor function Employee", () => {
             const newEmployee = new Employee();
-            
-            expect(newEmployee).toEqual({name: undefined, id: undefined, email: undefined});
+            expect(typeof newEmployee).toBe("object")
         });
     });
     describe("getName", () => {

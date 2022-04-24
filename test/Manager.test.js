@@ -3,10 +3,9 @@ const Manager = require('./../lib/Manager');
 
 describe("Manager", () => {
     describe("Initialization", () => {
-        it("It should create an object with 4 undefined properties name, id, and email, officeNum", () => {
+        it("It should create an object from the constructor function Manager", () => {
             const newManager = new Manager.Manager();
-            
-            expect(newManager).toEqual({name: undefined, id: undefined, email: undefined, officeNum: undefined});
+            expect(typeof newManager).toBe("object")
         });
     });
     describe("getName", () => {
@@ -39,14 +38,6 @@ describe("Manager", () => {
             const newManager = new Manager.Manager("John Namesman", 123, "John@me.com");
             const str = "Manager";
             const result = newManager.getRole();
-            expect(str).toEqual(result);
-        });
-    });
-    describe("getGitHub", () => {
-        it("Should return the github username provided to the constructor function as the fourth argument", () => {
-            const newManager = new Manager.Manager("John Namesman", 123, "John@me.com", "Stiltskinner");
-            const str = "Stiltskinner";
-            const result = newManager.getGitHub();
             expect(str).toEqual(result);
         });
     });
