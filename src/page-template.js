@@ -1,8 +1,6 @@
-// const Employee = require('./../lib/Employee');
-// const Manager = require('./../lib/Manager');
-
 let employeeArr = [];
 
+// Functions to create the HTML for each card-type based on user input about employee
 const formatManager = (element) => {
     let managerEl = element;
     const { name, id, email, officeNum} = managerEl;
@@ -24,7 +22,7 @@ const formatIntern = (element) => {
     return `<div class="col pb-3 pr-3 mb-3 bg-body rounded"><div class="card shadow" style="width: 18rem;"><div class="card-body bg-primary"><h5 class="card-title text-light">${name}</h5><p class="card-text text-light">${role}</p></div><div class=" bg-lgray py-3 px-1" style="width: 18rem;"><ul class="list-group list-group-flush border bd-list mx-auto" style="width: 15rem;"><li class="list-group-item">ID: ${id}</li><li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li><li class="list-group-item">School: ${schoolName}</li></ul></div></div></div>`
 }
 
-// Will need switch or if statements to check for employee type
+// Adds generated html to the end of the employeeArr, choosing the correct formatting based on Role
 const genCard = (employee) => {
     let currentRole = employee.getRole();
     switch (currentRole) {
@@ -40,9 +38,9 @@ const genCard = (employee) => {
         default:
             break;
     }
-    console.log("Employee Array", employeeArr);
 }
 
+// Function to generate the html content that will be written to team.html
 const genHTML = () => {
     const allCards = employeeArr.join('');
     return `<!DOCTYPE html>
