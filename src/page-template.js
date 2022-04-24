@@ -7,22 +7,7 @@ const formatManager = (element) => {
     let managerEl = element;
     const { name, id, email, officeNum} = managerEl;
     let role = managerEl.getRole();
-    return `<div class="col pb-3 pr-3 mb-3 bg-body rounded"><div class="card shadow" style="width: 18rem;"><div class="card-body bg-primary"><h5 class="card-title text-light">${name}/h5><p class="card-text text-light">${role}</p></div><div class=" bg-lgray py-3 px-1" style="width: 18rem;"><ul class="list-group list-group-flush border bd-list mx-auto" style="width: 15rem;"><li class="list-group-item">ID: ${id}</li><li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li><li class="list-group-item">Office Number: ${officeNum}</li></ul></div></div></div>`
-//     return `<div class="col pb-3 pr-3 mb-3 bg-body rounded">
-//     <div class="card shadow" style="width: 18rem;">
-//         <div class="card-body bg-primary">
-//           <h5 class="card-title text-light">${name}</h5>
-//           <p class="card-text text-light">${role}</p>
-//         </div>
-//         <div class=" bg-lgray py-3 px-1" style="width: 18rem;">
-//             <ul class="list-group list-group-flush border bd-list mx-auto" style="width: 15rem;">
-//                 <li class="list-group-item">ID: ${id}</li>
-//                 <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li>
-//                 <li class="list-group-item">Office Number: ${officeNum}</li>
-//             </ul>
-//         </div>
-//       </div>
-// </div>`
+    return `<div class="col pb-3 pr-3 mb-3 bg-body rounded"><div class="card shadow" style="width: 18rem;"><div class="card-body bg-primary"><h5 class="card-title text-light">${name}</h5><p class="card-text text-light">${role}</p></div><div class=" bg-lgray py-3 px-1" style="width: 18rem;"><ul class="list-group list-group-flush border bd-list mx-auto" style="width: 15rem;"><li class="list-group-item">ID: ${id}</li><li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li><li class="list-group-item">Office Number: ${officeNum}</li></ul></div></div></div>`
 }
 
 const formatEngineer = (element) => {
@@ -44,15 +29,12 @@ const genCard = (employee) => {
     let currentRole = employee.getRole();
     switch (currentRole) {
         case "Manager":
-            console.log("Pushing manager to array")
             employeeArr.push(formatManager(employee));
             break;
         case "Engineer":
-            console.log("Pushing Engineer to array")
             employeeArr.push(formatEngineer(employee));
             break;
         case "Intern":
-            console.log("Pushing Intern to array")
             employeeArr.push(formatIntern(employee));
             break;
         default:
